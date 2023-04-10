@@ -1,0 +1,351 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(to bottom, rgb(57, 110, 175), rgb(255, 255, 255));
+}
+
+.calculator {
+    position: relative;
+    height: auto;
+    width: auto;
+    padding: 0 5px 20px 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #000;
+    transition: all 0.5s ease;
+}
+
+.theme-toggler {
+    display: inline;
+    cursor: pointer;
+    z-index: 1;
+    text-align: center;
+}
+
+.theme-toggler::before {
+    content: "";
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: rgb(82, 126, 172);
+    z-index: 2;
+    position: absolute;
+    left: 208px; bottom: 16px;
+    height: 12px; width: 12px;
+}
+
+.theme-toggler.active {
+    color: #333;
+}
+
+.theme-toggler.active::before {
+    background-color: red;
+    position: absolute;
+    left: 202.4px; bottom: 16px;
+    height: 12px; width: 12px;
+}
+
+#display {
+    margin: 0 10px;
+    height: 150px;
+    width: auto;
+    max-width: 270px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 35px;
+    margin-bottom: 20px;
+    overflow-x: scroll;
+    
+}
+
+#display::-webkit-scrollbar {
+    display: block;
+    height: 3px;
+}
+
+button {
+    height: 60px; 
+    width: 60px; 
+    border: 0; 
+    border-radius: 30px;
+    margin: 5px;
+    font-size: 23px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+/* Buttons grid */
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+button:active {
+    transform: scale(0.9);
+}
+/* Number "0" span two coloumns */
+button:nth-child(17) { grid-column: 1/3; width: 128px; text-align: left; padding-left: 24px;}
+
+/* Light Theme styling */
+
+.calculator {
+    background-color: #fff;
+}
+
+.calculator #display {
+    color: #0a1e23;
+}
+
+.calculator button#clear {
+    background-color: rgb(224, 73, 73);
+    font-size: 22px;
+}
+
+.calculator button:nth-child(2),
+.calculator button:nth-child(3) {
+    background-color: black;
+    color: #cccccc;
+    font-size: 22px;
+}
+
+.calculator button.btn-number {
+    background-color: #f69907;
+    color: rgb(255, 255, 255);
+}
+
+.calculator button:nth-child(4),
+.calculator button:nth-child(8),
+.calculator button:nth-child(12),
+.calculator button:nth-child(16),
+.calculator button:nth-child(19) {
+    background-color: rgb(33, 103, 131);
+    color: #f69907;
+    font-size: 25px;
+}
+
+.calculator .theme-toggler {
+    margin-top: 20px;
+    color: #000;
+    display: block;
+    width: 109px;
+    margin-right: auto; margin-left: auto;
+    font-family: 'Courier New';
+    font-size: 12px;
+    text-align: left;
+}
+
+
+.calculator .theme-mode {
+    text-align: left;
+    width: auto;
+    display: inline;
+    margin-right: 0px;
+    display: inline;
+    box-shadow: 0px 1px 3px ;
+}
+
+.calculator .on{
+    display: inline-block;
+    height: auto;
+    text-align: left;
+    margin: 0;
+    vertical-align: middle;
+    padding-top: 1.3px;
+}
+
+.calculator .off {
+    display: none;
+}
+
+.theme-mode{
+    text-align: left;
+    width: auto;
+    display: inline;
+}
+/* Light Theme styling ends here */
+
+
+/* Dark Theme styling */
+
+.calculator.dark {
+    background-color: #071115;
+}
+
+.calculator.dark #display {
+    color: #f8fafd;
+}
+
+.calculator.dark button#clear,
+.calculator.dark button:nth-child(2),
+.calculator.dark button:nth-child(3) {
+    background-color: #cccccc;
+    color: black;
+}
+
+.calculator.dark button.btn-number {
+    background-color: rgba(93, 86, 86, 0.833);
+    color: white;
+}
+
+.calculator.dark button:nth-child(4),
+.calculator.dark button:nth-child(8),
+.calculator.dark button:nth-child(12),
+.calculator.dark button:nth-child(16),
+.calculator.dark button:nth-child(19) {
+    background-color: #f69907;
+    color: white
+}
+
+.calculator.dark .theme-toggler {
+    margin-top: 20px;
+    color: #fff;
+    height: auto;
+    display: block;
+    width: 104px;
+    margin-right: auto; margin-left: auto;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    text-align: left;
+}
+
+.calculator.dark .theme-mode{
+    width: auto;
+    margin-right: -1px;
+    display: inline;
+    box-shadow: 0px 1px 3px ;
+}
+
+.calculator.dark .off, .calculator.dark .theme-mode {
+    display: inline;
+    color: white;
+    width: auto;
+    font-family: 'Courier New', Courier;
+}
+
+.calculator.dark .off {
+    height: auto;
+    display: inline-block;
+    vertical-align: middle; 
+}
+
+.calculator.dark .on {
+    display: none;
+}
+/* Dark Theme styling ends here */
+
+/* project done by's section */
+.projectDoer {
+    position: relative; bottom: 50px;
+    display: inline;
+    font-family:inherit;
+    width: auto;
+    margin-left: auto; margin-right: 20px;
+    text-shadow: 0px -4px 8px rgb(0, 131, 148);
+    font-size: 14px;
+}
+
+.name {
+    color: rgb(21, 19, 22);
+    display: inline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.doneBy {
+    display: inline;
+}
+
+/* RESPONSIVE DESIGN starts here */
+@media only screen and (min-width: 360px) and (max-width: 414px){
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-items: center;
+    }
+
+    .calculator {
+        position: relative;
+        height: auto;
+        width: auto;
+        padding: 0 5px 20px 5px;
+        border-radius: 10px;
+        margin-right: 15px;
+    }
+
+    #display {
+        margin: 0 10px;
+        height: 115px;
+        width: auto;
+        max-width: 270px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        font-size: 35px;
+        margin-bottom: 20px;
+        overflow-x: scroll;
+    }
+
+    .buttons {
+        height: auto;
+        width: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    button {
+        height: 55px; 
+        width: 55px; 
+        border: 0; 
+        border-radius: 30px;
+        margin: 5px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .projectDoer {
+        text-align: center;
+        position: relative; top: -5px;
+        display: inline;
+        width: auto;
+        margin-left: auto; margin-right: 10px;
+        font-size: 10px;
+    }
+
+    .doneBy {
+        display: block;
+        margin-left: auto; margin-right: auto;
+        width: 100vw;
+    }
+}
+
+/* DESKTOP VIEW */
+.projectDoer {
+    position: relative; bottom: 100px;
+    display: inline;
+    /* font-family:inherit; */
+    width: auto;
+    margin-left: auto; margin-right: 20px;
+    /* text-shadow: 0px -4px 8px rgb(0, 131, 148); */
+    font-size: 14px;
+}
